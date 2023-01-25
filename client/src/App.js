@@ -20,8 +20,8 @@ export default function App() {
         <Route index element={<Navigate replace to="/Login" />}></Route>
         <Route path='/Login' element={<Login />}></Route>
         <Route path="/users/:user_id" element={<Home />}>
-          <Route path="/info" element={<Info />} />
-          <Route path="/change_info" element={<ChangeInfo />} />
+          <Route path="info" element={<Info />} />
+          <Route path="change_info" element={<ChangeInfo />} />
         </Route>
       </Routes>
     </AppContext.Provider>

@@ -9,14 +9,13 @@ import Albums from './pages/Albums';
 import ToDos from './pages/ToDos';
 import Posts from './pages/Posts';
 
-
-export const AppContext = createContext();
-
 export default function App() {
-  const [user, setUser] = useState(null);
   
   return (
-    <h1></h1>
+    <Routes>
+        <Route index element={<Navigate replace to ="/Login" />}></Route>
+        <Route path='/Login' element={<Login/>}></Route>
+    </Routes>
   );
 }
 

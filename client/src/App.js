@@ -16,20 +16,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   
   return (
-    <AppContext.Provider value={{ user, setUser }}>
-      <Routes >
-        <Route index element={<Navigate replace to ="/Login" />}></Route>
-        <Route path='/Login' element={<Login/>}></Route>
-        <Route path="/Home/:userName" element={<NavBar />}>
-          <Route index element={<Home />}></Route>
-          <Route path="Info" element={<Info />}></Route>
-          <Route path="Albums" element={<Albums />}></Route>
-          <Route path="Posts" element={<Posts />}></Route>
-          <Route path="Todos" element={<ToDos />}></Route>
-        </Route>
-        <Route path='*' element={<h1>Error</h1>}></Route>
-      </Routes>
-    </AppContext.Provider>
+    <h1></h1>
   );
 }
 

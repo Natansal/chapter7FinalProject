@@ -8,6 +8,9 @@ function getPosts(req, res, next) {
       if (err) {
          return res.status(400).send(err);
       }
+      if (req.params.post_id) {
+         result = result[0];
+      }
       res.status(200).send(result);
    });
 }

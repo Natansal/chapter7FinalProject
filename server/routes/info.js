@@ -8,7 +8,7 @@ router.get("/:user_id/info", (req, res, next) => {
       if (err) {
          return res.status(400).send(err);
       }
-      res.status(200).send(result);
+      res.status(200).send(result[0]);
    });
 });
 

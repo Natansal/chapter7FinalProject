@@ -10,6 +10,9 @@ function getcomments(req, res, next) {
          if (err) {
             return res.status(400).send(err);
          }
+         if (req.params.comment_id) {
+            result = result[0];
+         }
          res.status(200).send(result);
       },
    );

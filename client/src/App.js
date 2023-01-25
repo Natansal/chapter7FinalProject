@@ -3,7 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import React, { useState, createContext } from 'react';
 import Login from './pages/Login';
 import Home from './pages/Home';
-// import Info from './pages/Info';
+import Info from './pages/Info';
+import ChangeInfo from './pages/ChangeInfo';
 // import NavBar from './pages/NavBar';
 // import Albums from './pages/Albums';
 // import ToDos from './pages/ToDos';
@@ -19,11 +20,11 @@ export default function App() {
         <Route index element={<Navigate replace to="/Login" />}></Route>
         <Route path='/Login' element={<Login />}></Route>
         <Route path="/users/:user_id" element={<Home />}>
-
+          <Route path="/info" element={<Info />} />
+          <Route path="/change_info" element={<ChangeInfo />} />
         </Route>
       </Routes>
     </AppContext.Provider>
 
   );
 }
-

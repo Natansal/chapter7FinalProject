@@ -1,11 +1,8 @@
 var express = require("express");
+const app = require("../app");
 var router = express.Router();
 const { database } = require("../database");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-   res.send("respond with a resource");
-});
 
 router.post("/login", function (req, res, next) {
    let username = req.body.username;
@@ -26,7 +23,7 @@ router.post("/register", function (req, res, next) {
    let email = req.body.email;
    let phone = req.body.phone;
    let job = req.body.job;
-   var sql = `SELECT username FROM user WHERE username = '${username}'`
+   let sql = `SELECT username FROM user WHERE username = '${username}'`
    database.query(sql, (err, result) => {
       if (err) throw err;
       if (result.length === 1) {
@@ -37,7 +34,7 @@ router.post("/register", function (req, res, next) {
          database.query(sql, (err, result) => {
             if (err) throw err;
             console.log("user created successful!");
-            var userID = result.insertId;
+            let userID = result.insertId;
             sql = `INSERT INTO info (user_id,full_name,email,phone,job) VALUES (${userID},'${full_name}','${email}','${phone}','${job}');`;
             database.query(sql, (err, result) => {
                if (err) throw err;
@@ -50,4 +47,32 @@ router.post("/register", function (req, res, next) {
 });
 
 
+router.put('/:user_id/update', (req, res) => {
+   let user_id = req.params.user_id;
+   let body = req.body;
+   let infoChanges = '';
+   let userChanges = '';
+   for (let key in body) {
+      if (key !== 'password' && key !== 'username') {
+         infoChanges += `${key} = '${body[key]}',`;
+      } else {
+         if (key === 'password') {
+            userChanges += `${key} = ${body[key]},`
+
+         } else {
+            userChanges += `${key} = '${body[key]}',`
+         }
+      }
+   }
+   let tablesToUpdate = ['user', 'info'];
+   let changesInTable = [userChanges, infoChanges];
+   for (const table of tablesToUpdate) {
+      changesInTable[tablesToUpdate.indexOf(table)] = changesInTable[tablesToUpdate.indexOf(table)].substring(0, changesInTable[tablesToUpdate.indexOf(table)].length - 1);
+      let sql = `UPDATE ${table} SET ${changesInTable[tablesToUpdate.indexOf(table)]} WHERE user_id = ${user_id};`
+      database.query(sql, (err, result) => {
+         if (err) throw err;
+         res.status(200).send("user updated!");
+      });
+   }
+})
 module.exports = router;

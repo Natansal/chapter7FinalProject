@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import ChangeInfo from "./pages/ChangeInfo";
+import Todos from "./pages/Todos";
+import AddTodo from "./pages/AddTodos";
 // import NavBar from './pages/NavBar';
 // import Albums from './pages/Albums';
 // import ToDos from './pages/ToDos';
@@ -41,6 +43,14 @@ export default function App() {
             <Route
                path="/users/:user_id/change_info"
                element={<ChangeInfo />}
+            />
+            <Route
+               path="/users/:user_id/todos"
+               element={<Todos />}
+            />
+            <Route
+               path="/users/:user_id/add_todo"
+               element={<AddTodo />}
             />
          </Routes>
       </AppContext.Provider>

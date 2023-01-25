@@ -13,6 +13,6 @@
     "fs-extra": "^11.1.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
-    "node-fetch": "^2.0.0"
+    "node-fetch": "^2.6.8"
   }
 }

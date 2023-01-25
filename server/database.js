@@ -29,4 +29,4 @@ async function fillDatabase() {
    });
 }
 
-module.exports = database;
+module.exports = {database};

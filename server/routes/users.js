@@ -12,7 +12,7 @@ router.post("/login", function (req, res, next) {
       if (result.length === 0) {
          return res.status(404).send({ message: "Incorrect data", logged: false });
       }
-      res.status(200).send({ message: "User logged in successfuly!", logged: true });
+      res.status(200).send({ message: "User logged in successfuly!", logged: true, id: result[0].user_id });
    });
 });
 

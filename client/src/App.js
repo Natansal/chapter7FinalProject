@@ -5,44 +5,45 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import ChangeInfo from "./pages/ChangeInfo";
-// import NavBar from './pages/NavBar';
+import Register from "./pages/Register";
 // import Albums from './pages/Albums';
 // import ToDos from './pages/ToDos';
 // import Posts from './pages/Posts';
 export const AppContext = createContext();
 
 export default function App() {
-   const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-   return (
-      <AppContext.Provider value={{ userId, setUserId }}>
-         <Routes>
-            <Route
-               index
-               element={
-                  <Navigate
-                     replace
-                     to="/Login"
-                  />
-               }
-            ></Route>
-            <Route
-               path="/Login"
-               element={<Login />}
-            ></Route>
-            <Route
-               path="/users/:user_id"
-               element={<Home />}
+  return (
+    <AppContext.Provider value={{ userId, setUserId }}>
+      <Routes>
+        <Route
+          index
+          element={
+            <Navigate
+              replace
+              to="/Login"
             />
-            <Route
-               path="/users/:user_id/info"
-               element={<Info />}
-            />
-            <Route
-               path="/users/:user_id/change_info"
-               element={<ChangeInfo />}
-            />
-         </Routes>
-      </AppContext.Provider>
-   );
+          }
+        ></Route>
+                <Route path='/Register' element={<Register/>}></Route>
+          <Route
+            path="/Login"
+            element={<Login />}
+          ></Route>
+          <Route
+            path="/users/:user_id"
+            element={<Home />}
+          />
+          <Route
+            path="/users/:user_id/info"
+            element={<Info />}
+          />
+          <Route
+            path="/users/:user_id/change_info"
+            element={<ChangeInfo />}
+          />
+      </Routes>
+    </AppContext.Provider>
+  );
 }

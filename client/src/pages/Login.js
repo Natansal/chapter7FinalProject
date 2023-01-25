@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import serverAdress from '../serverAdress';
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { AppContext } from '../App';
 
 
@@ -39,6 +39,7 @@ function Login() {
                 <input type="password" name="password" onChange={handleInputs} />
                 <button type='submit'>Click to submit</button>
             </form>
+            <NavLink to={'/Register'}>Click here to register</NavLink >
         </div>
     )
 }

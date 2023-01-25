@@ -24,6 +24,7 @@ router.post("/register", function (req, res, next) {
    let sql = `INSERT INTO user (username,password) VALUES ('${username}',${password});`;
    database.query(sql, (err, result) => {
       if (err && err.code === "ER_DUP_ENTRY") {
+         console.table(err);
          return res.status(400).send({ message: "username already exists" });
       }
       if (err) {
@@ -40,37 +41,34 @@ router.post("/register", function (req, res, next) {
    });
 });
 
-router.put("/:user_id", (req, res) => {
+router.put("/:user_id/update", (req, res) => {
    let user_id = req.params.user_id;
-   const { username, newUsername, password, newPassword } = req.body;
-   if (!newUsername && !newPassword) {
-      return res.status(400).send({ message: "Invalid data!" });
-   }
-   let sql = `SELECT user_id, username, password FROM user WHERE username = '${username}' AND password = ${password};`;
-   database.query(sql, (err, result) => {
-      if (err) throw err;
-      if (result.length === 0 || result[0].user_id != user_id) {
-         return res.status(404).send({ message: "Incorrect data" });
-      }
-      let toUpdate = "SET";
-      if (newUsername) {
-         toUpdate += ` username='${newUsername}',`;
-      }
-      if (newPassword) {
-         toUpdate += ` password=${newPassword}`;
+   let body = req.body;
+   let infoChanges = "";
+   let userChanges = "";
+   for (let key in body) {
+      if (key !== "password" && key !== "username") {
+         infoChanges += `${key} = '${body[key]}',`;
       } else {
-         toUpdate = toUpdate.substring(0, toUpdate.length - 1);
+         if (key === "password") {
+            userChanges += `${key} = ${body[key]},`;
+         } else {
+            userChanges += `${key} = '${body[key]}',`;
+         }
       }
-      sql = `UPDATE user ${toUpdate} WHERE user_id = ${user_id};`;
+   }
+   let tablesToUpdate = ["user", "info"];
+   let changesInTable = [userChanges, infoChanges];
+   for (const table of tablesToUpdate) {
+      changesInTable[tablesToUpdate.indexOf(table)] = changesInTable[tablesToUpdate.indexOf(table)].substring(
+         0,
+         changesInTable[tablesToUpdate.indexOf(table)].length - 1,
+      );
+      let sql = `UPDATE ${table} SET ${changesInTable[tablesToUpdate.indexOf(table)]} WHERE user_id = ${user_id};`;
       database.query(sql, (err, result) => {
-         if (err && err.code === "ER_DUP_ENTRY") {
-            return res.status(400).send({ message: "username already exists" });
-         }
-         if (err) {
-            return res.status(400).send(err);
-         }
-         res.status(200).send({ message: "user updated!" });
+         if (err) throw err;
+         res.status(200).send("user updated!");
       });
-   });
+   }
 });
 module.exports = router;

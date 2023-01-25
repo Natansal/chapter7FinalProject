@@ -14,7 +14,7 @@ import Register from "./pages/Register";
 export const AppContext = createContext();
 
 export default function App() {
-  const [userId, setUserId] = useState(null);
+   const [userId, setUserId] = useState(null);
 
    return (
       <AppContext.Provider value={{ userId, setUserId }}>
@@ -43,6 +43,14 @@ export default function App() {
             <Route
                path="/users/:user_id/change_info"
                element={<ChangeInfo />}
+            />
+            <Route
+               path="/users/:user_id/todos"
+               element={<Todos />}
+            />
+            <Route
+               path="/users/:user_id/add_todo"
+               element={<AddTodo />}
             />
          </Routes>
       </AppContext.Provider>

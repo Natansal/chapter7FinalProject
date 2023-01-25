@@ -9,6 +9,7 @@ const usersRouter = require("./routes/users");
 const todosRouter = require("./routes/todos");
 const postsRouter = require("./routes/posts");
 const commentsRouter = require("./routes/comments");
+const infoRouter = require("./routes/info");
 
 const app = express();
 
@@ -19,6 +20,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/users", usersRouter, todosRouter, postsRouter, commentsRouter);
+app.use("/users", usersRouter, todosRouter, postsRouter, commentsRouter, infoRouter);
 
 module.exports = app;

@@ -13,6 +13,23 @@ database.connect(function (err) {
    console.log("Connected to database!");
 });
 
+function createQueryFromRequest(queryObj) {
+   if (!queryObj) {
+      return "";
+   }
+   let query = "WHERE ";
+   for (let key in queryObj) {
+      if (Number.isNaN(Number(queryObj[key]))) {
+         queryObj[key] = `'${queryObj[key]}'`;
+      }
+      if (query !== "WHERE ") {
+         query += "AND ";
+      }
+      query += `${key}=${queryObj[key]} `;
+   }
+   return query === "WHERE " ? "" : query.substring(0, query.length - 1);
+}
+
 async function fillDatabase() {
    //demo to fill the database from jsonplaceholder
    let comments = await fetch("https://jsonplaceholder.typicode.com/comments");
@@ -29,4 +46,4 @@ async function fillDatabase() {
    });
 }
 
-module.exports = database;
+module.exports = { database, createQueryFromRequest };

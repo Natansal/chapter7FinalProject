@@ -17,7 +17,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/users/:user_id/todos", todosRouter);
 app.use("/users", usersRouter, todosRouter);
 
 module.exports = app;

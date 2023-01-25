@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 
@@ -15,14 +15,10 @@ export default function Login() {
 
     const getUser = async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:8000/users/login`);
-        const json = await response.json();
         try {
-            if (json[0].address.geo.lat.slice(-4) === user.password) {
-                localStorage.setItem("users", JSON.stringify(json[0]));
-                setUser(json[0]);
-                navigate(`/Home/${user.username}`);
-            }
+            const response = await fetch(`http://localhost:8000/users/login`);
+            const json = await response.json();
+            navigate(`/Home/${user.username}`);
         }
         catch (error) {
             alert('Wrong username or password');

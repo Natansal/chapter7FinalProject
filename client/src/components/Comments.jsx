@@ -10,22 +10,23 @@ async function getComments(id, post_id) {
 
 function Comments({ post_id }) {
    const { user_id } = useParams();
-   const [Comments, setComments] = useState(undefined);
+   const [comments, setComments] = useState(undefined);
 
    useEffect(() => {
       getComments(user_id, post_id).then((comments) => setComments(comments));
       return () => setComments();
    }, [user_id, post_id]);
 
-   if (!Comment) {
+   if (!comments) {
       return <h1>Loading...</h1>;
    }
 
    return (
       <div>
-         {Comments.map((comment) => {
+         {comments.map((comment, index) => {
             return (
-               <div>
+               <div key={index}>
+                  <h1>{comment.full_name}</h1>
                   <p>{comment.body}</p>
                </div>
             );

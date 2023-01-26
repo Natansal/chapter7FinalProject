@@ -5,7 +5,10 @@ const router = express.Router();
 /* GET users listing. */
 function getcomments(req, res, next) {
    database.query(
-      `SELECT * FROM comment ${createQueryFromRequest({ ...req.query, ...req.params })};`,
+      `SELECT i.full_name AS 'full_name', c.post_id AS 'post_id', c.comment_id AS 'comment_id', c.post_id AS post_id, c.body AS 'body' FROM comment c JOIN info i ON c.user_id = i.user_id   ${createQueryFromRequest(
+         { ...req.query, ...req.params },
+         "c.",
+      )};`,
       (err, result) => {
          if (err) {
             return res.status(400).send(err);
@@ -20,6 +23,7 @@ function getcomments(req, res, next) {
 
 router.get("/:user_id/comments", getcomments);
 router.get("/:user_id/comments/:comment_id", getcomments);
+router.get("/comments", getcomments);
 
 router.post("/:user_id/comments", (req, res, next) => {
    const { user_id } = req.params;

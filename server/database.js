@@ -13,7 +13,7 @@ database.connect(function (err) {
    console.log("Connected to database!");
 });
 
-function createQueryFromRequest(queryObj) {
+function createQueryFromRequest(queryObj, startChar = "") {
    if (!queryObj) {
       return "";
    }
@@ -25,7 +25,7 @@ function createQueryFromRequest(queryObj) {
       if (query !== "WHERE ") {
          query += "AND ";
       }
-      query += `${key}=${queryObj[key]} `;
+      query += `${startChar}${key}=${queryObj[key]} `;
    }
    return query === "WHERE " ? "" : query.substring(0, query.length - 1);
 }

@@ -45,16 +45,30 @@ function Posts() {
       });
    }
 
-   function handleComments(e) {}
+   function handleComments(e) {
+      const post_id = e.target.name.substring(4, e.target.name.length);
+      setPosts((prev) => {
+         let arr = JSON.parse(JSON.stringify(prev));
+         let post = arr.find((post) => post.post_id == post_id);
+         post.commentVis = !post.commentVis;
+         return arr;
+      });
+   }
    return (
       <div>
-         {posts.map((post) => {
+         {posts.map((post, index) => {
             return (
-               <div>
+               <div key={index}>
+                  <h1>{post.full_name}</h1>
                   <h1>{post.title}</h1>
                   <p>{post.body}</p>
                   {post.commentVis ? <Comments post_id={post.post_id} /> : ""}
-                  <button onClick={handleComments}>Show comments</button>
+                  <button
+                     name={`post${post.post_id}`}
+                     onClick={handleComments}
+                  >
+                     Show comments
+                  </button>
                   <button
                      name={`post${post.post_id}`}
                      onClick={handleDelete}

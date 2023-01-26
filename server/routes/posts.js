@@ -5,7 +5,7 @@ const router = express.Router();
 /* GET users listing. */
 function getPosts(req, res, next) {
    database.query(
-      `SELECT p.post_id AS 'post_id', i.full_name AS 'full_name', p.title AS 'title', p.body AS 'body' FROM post p JOIN info i ON p.user_id = i.user_id ${createQueryFromRequest(
+      `SELECT p.user_id AS 'user_id', p.post_id AS 'post_id', i.full_name AS 'full_name', p.title AS 'title', p.body AS 'body' FROM post p JOIN info i ON p.user_id = i.user_id ${createQueryFromRequest(
          { ...req.query, ...req.params },
          "p.",
       )};`,

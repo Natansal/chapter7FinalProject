@@ -8,6 +8,7 @@ import ChangeInfo from "./pages/ChangeInfo";
 import Todos from "./pages/Todos";
 import AddTodo from "./pages/AddTodos";
 import Register from "./pages/Register";
+import Posts from "./pages/Posts";
 // import Albums from './pages/Albums';
 // import ToDos from './pages/ToDos';
 // import Posts from './pages/Posts';
@@ -51,6 +52,10 @@ export default function App() {
             <Route
                path="/users/:user_id/add_todo"
                element={<AddTodo />}
+            />
+            <Route
+               path="/users/:user_id/posts"
+               element={<Posts />}
             />
          </Routes>
       </AppContext.Provider>

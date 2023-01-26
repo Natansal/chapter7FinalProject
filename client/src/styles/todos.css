@@ -22,6 +22,7 @@
 
 .todos {
     flex: 4;
+    min-height: 85vh;
 }
 
 .addTodosPage {
@@ -39,14 +40,16 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    height:  60vh;
+    height: 60vh;
 }
-.addTodosPage form>input{
+
+.addTodosPage form>input {
     width: 20vw;
     height: 10vh;
     font-size: 20px;
 }
-.addTodosPage form>h1{
+
+.addTodosPage form>h1 {
     font-size: 50px;
 }
 

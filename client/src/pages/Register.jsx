@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,NavLink } from "react-router-dom";
 import serverAdress from "../serverAdress";
 import { AppContext } from "../App";
 import "../styles/register.css";
@@ -107,6 +107,7 @@ function Register() {
         <br />
         <button type="submit">Register</button>
       </form>
+      <NavLink className='login' to={"/login"}>Click here to Login</NavLink>
     </div>
   );
 }

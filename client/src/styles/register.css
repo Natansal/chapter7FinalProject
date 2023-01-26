@@ -50,3 +50,13 @@
 .registerPage button[type="submit"]:hover {
   background-color: #75c0c3;
 }
+
+.loginPage .login {
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: #818181;
+  border: 2px solid #bed3de;
+  border-radius: 4px;
+}

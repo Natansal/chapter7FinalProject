@@ -10,7 +10,6 @@ import AddTodo from "./pages/AddTodos";
 import Register from "./pages/Register";
 import Posts from "./pages/Posts";
 // import Albums from './pages/Albums';
-// import ToDos from './pages/ToDos';
 // import Posts from './pages/Posts';
 export const AppContext = createContext();
 
@@ -33,6 +32,7 @@ export default function App() {
                path="/Login"
                element={<Login />}
             ></Route>
+            <Route path='/Register' element={<Register />}></Route>
             <Route
                path="/users/:user_id"
                element={<Home />}

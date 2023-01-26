@@ -1,11 +1,8 @@
 const express = require("express");
-const app = require("../app");
 const router = express.Router();
 const { database } = require("../database");
 
 router.post("/login", function (req, res, next) {
-   // let username = req.body.username;
-   // let password = req.body.password;
    const {username,password} = req.body;
    let sql = `SELECT user_id, username, password FROM user WHERE username = '${username}' AND password = ${password};`;
    database.query(sql, (err, result) => {

@@ -62,12 +62,12 @@ function Posts() {
                   <h1>{post.full_name}</h1>
                   <h1>{post.title}</h1>
                   <p>{post.body}</p>
-                  {post.commentVis ? <Comments post_id={post.post_id} /> : ""}
+                  {post.commentVis && <Comments post_id={post.post_id} />}
                   <button
                      name={`post${post.post_id}`}
                      onClick={handleComments}
                   >
-                     Show comments
+                     {post.commentVis ? "Hide comments" : "Show comments"}
                   </button>
                   <button
                      name={`post${post.post_id}`}

@@ -10,6 +10,8 @@ export default function NavBar() {
          <hr />
          <NavLink to={`/users/${user_id}/change_info`}>Change info</NavLink>
          <hr />
+         <NavLink to={`/users/${user_id}/change_user_info`}>Change user data</NavLink>
+         <hr />
          <NavLink to={`/users/${user_id}/todos`}>Todos</NavLink>
          <hr />
          <NavLink to={`/users/${user_id}/add_todo`}>Add todo</NavLink>

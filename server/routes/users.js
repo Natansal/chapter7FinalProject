@@ -43,11 +43,11 @@ router.post("/register", function (req, res, next) {
 
 router.put("/:user_id", (req, res) => {
    let user_id = req.params.user_id;
-   const { username, newUsername, password, newPassword } = req.body;
+   const { oldUsername, newUsername, oldPassword, newPassword } = req.body;
    if (!newUsername && !newPassword) {
-      return res.status(400).send({ message: "Invalid data!" });
+      return res.status(422).send({ message: "Invalid data!" });
    }
-   let sql = `SELECT user_id, username, password FROM user WHERE username = '${username}' AND password = ${password};`;
+   let sql = `SELECT user_id, username, password FROM user WHERE username = '${oldUsername}' AND password = ${oldPassword};`;
    database.query(sql, (err, result) => {
       if (err) throw err;
       if (result.length === 0 || result[0].user_id != user_id) {
@@ -65,7 +65,7 @@ router.put("/:user_id", (req, res) => {
       sql = `UPDATE user ${toUpdate} WHERE user_id = ${user_id};`;
       database.query(sql, (err, result) => {
          if (err && err.code === "ER_DUP_ENTRY") {
-            return res.status(400).send({ message: "username already exists" });
+            return res.status(409).send({ message: "username already exists" });
          }
          if (err) {
             return res.status(400).send(err);

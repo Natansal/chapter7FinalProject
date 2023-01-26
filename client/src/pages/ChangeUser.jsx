@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import serverAdress from "../serverAdress";
 
 function ChangeUser() {
+  const { user_id } = useParams();
+
   const [formData, setFormData] = useState({
     oldUsername: "",
     oldPassword: "",
@@ -15,9 +19,27 @@ function ChangeUser() {
     });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`${serverAdress}/users/${user_id}`, {
+      method: "PUT",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.status === 200) {
+      alert("User changed successfully");
+    } else if (res.status === 409) {
+      alert("Username is already taken");
+    } else if (res.status === 422) {
+      alert("fill all the one of the change fields!!!");
+    } else {
+      alert("User not found");
+    }
+  };
   return (
     <div>
+      <br />
+      <br />
       <form onSubmit={handleSubmit}>
         <label>
           Old Username:
@@ -28,6 +50,7 @@ function ChangeUser() {
             onChange={handleChange}
           />
         </label>
+        <br />
         <label>
           Old Password:
           <input
@@ -37,6 +60,7 @@ function ChangeUser() {
             onChange={handleChange}
           />
         </label>
+        <br />
         <label>
           New Username:
           <input
@@ -46,6 +70,7 @@ function ChangeUser() {
             onChange={handleChange}
           />
         </label>
+        <br />
         <label>
           New Password:
           <input
@@ -55,6 +80,8 @@ function ChangeUser() {
             onChange={handleChange}
           />
         </label>
+        <br />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

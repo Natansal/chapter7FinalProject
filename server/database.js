@@ -12,7 +12,6 @@ database.connect(function (err) {
    if (err) throw err;
    console.log("Connected to database!");
 });
-
 function createQueryFromRequest(queryObj, startChar = "") {
    if (!queryObj) {
       return "";
@@ -31,19 +30,26 @@ function createQueryFromRequest(queryObj, startChar = "") {
 }
 
 async function fillDatabase() {
-   //demo to fill the database from jsonplaceholder
-   let comments = await fetch("https://jsonplaceholder.typicode.com/comments");
-   comments = await comments.json();
-   comments.forEach((comment, index) => {
-      let commentQuery = [];
-      commentQuery.push([parseInt(index / 50) + 1, comment.postId, comment.body.substring(0, 255)]);
-
-      let query = "INSERT INTO comment (user_id, post_id, body) VALUES (?)";
-      database.query(query, commentQuery, (err, result) => {
-         if (err) throw err;
-         console.log(index + " successful!");
-      });
-   });
+   let arr = [],
+      counter = 0,
+      counter2 = 0;
+   for (let i = 0; i < 100; i++) {
+      arr[i] = 0;
+   }
+   while (counter < 500) {
+      let num = Math.floor(Math.random() * 100) + 1;
+      if (arr[num - 1] <= 5) {
+         arr[num - 1]++;
+         counter++;
+         database.query(`UPDATE comment SET post_id=${num} WHERE comment_id=${counter}`, (err, res) => {
+            counter2++;
+            if (err) {
+               throw err;
+            }
+            console.log(counter2 + " success!", num);
+         });
+      }
+   }
 }
 
 module.exports = { database, createQueryFromRequest };

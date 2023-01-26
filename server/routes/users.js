@@ -30,7 +30,9 @@ router.post("/register", function (req, res, next) {
       let userID = result.insertId;
       sql = `INSERT INTO info (user_id,full_name,email,phone,job) VALUES (${userID},'${full_name}','${email}','${phone}','${job}');`;
       database.query(sql, (err, result) => {
-         if (err) {
+         if (err && err.code === "ER_DUP_ENTRY") {
+            return res.status(420).send(err);
+         }if (err) {
             return res.status(400).send(err);
          }
          res.status(200).send({ message: "user created successful!", id: userID });

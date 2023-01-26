@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import serverAdress from '../serverAdress';
+
 function Register() {
     const navigate = useNavigate();
 
@@ -29,9 +30,14 @@ function Register() {
                 headers: { 'Content-Type': 'application/json' }
             });
         const data = await res.json();
-        if (data.id) navigate(`/users/${data.id}`);
-        else alert("User not exist");
-        
+        if (data.id) {
+            navigate(`/users/${data.id}`)
+        }
+        else if (res.status === 409) {
+            alert("Username is already taken");
+        } else if (res.status === 422) {
+            alert("fill all the required fields!!!")
+        }
     };
 
 

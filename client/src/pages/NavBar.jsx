@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import { AppContext } from "../App";
 
 
 export default function NavBar() {

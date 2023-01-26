@@ -4,20 +4,25 @@ import serverAdress from "../serverAdress";
 import Comments from "../components/Comments";
 
 async function getPosts(id) {
-   let posts = await fetch(`${serverAdress}/users/${id}/posts?deleted=0`);
+   let posts;
+   if (id) {
+      posts = await fetch(`${serverAdress}/users/${id}/posts?deleted=0`);
+   } else {
+      posts = await fetch(`${serverAdress}/users/posts?deleted=0`);
+   }
    posts = await posts.json();
    posts.forEach((post) => (post.commentVis = false));
    return posts;
 }
 
-function Posts() {
+function Posts({ all = false }) {
    const { user_id } = useParams();
    const [posts, setPosts] = useState(undefined);
 
    useEffect(() => {
-      getPosts(user_id).then((posts) => setPosts(posts));
+      getPosts(all ? undefined : user_id).then((posts) => setPosts(posts));
       return () => setPosts();
-   }, [user_id]);
+   }, [user_id, all]);
 
    if (!posts) {
       return <h1>Loading...</h1>;

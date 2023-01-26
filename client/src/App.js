@@ -1,5 +1,4 @@
 import "./styles/navbar.css";
-
 import { Routes, Route, Navigate, useNavigate, useParams, useLocation } from "react-router-dom";
 import React, { useState, createContext, useEffect } from "react";
 import Login from "./pages/Login";
@@ -12,8 +11,6 @@ import Register from "./pages/Register";
 import Posts from "./pages/Posts";
 import NavBar from "./pages/NavBar";
 import ChangeUser from "./pages/ChangeUser";
-// import Albums from './pages/Albums';
-// import Posts from './pages/Posts';
 export const AppContext = createContext();
 
 export default function App() {

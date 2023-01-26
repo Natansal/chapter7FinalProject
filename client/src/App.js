@@ -32,7 +32,10 @@ export default function App() {
                path="/Login"
                element={<Login />}
             ></Route>
-            <Route path='/Register' element={<Register />}></Route>
+            <Route
+               path='/Register'
+               element={<Register />}>
+            </Route>
             <Route
                path="/users/:user_id"
                element={<Home />}
@@ -57,6 +60,7 @@ export default function App() {
                path="/users/:user_id/posts"
                element={<Posts />}
             />
+            <Route path="*" element={<h1>404 Page not found!</h1>}/>
          </Routes>
       </AppContext.Provider>
    );

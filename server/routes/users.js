@@ -4,8 +4,9 @@ const router = express.Router();
 const { database } = require("../database");
 
 router.post("/login", function (req, res, next) {
-   let username = req.body.username;
-   let password = req.body.password;
+   // let username = req.body.username;
+   // let password = req.body.password;
+   const {username,password} = req.body;
    let sql = `SELECT user_id, username, password FROM user WHERE username = '${username}' AND password = ${password};`;
    database.query(sql, (err, result) => {
       if (err) throw err;
@@ -19,12 +20,12 @@ router.post("/login", function (req, res, next) {
 router.post("/register", function (req, res, next) {
    const { username, password, full_name, email, phone, job } = req.body;
    if (!username || !password || !email || !phone || !job) {
-      return res.status(400).send({ message: "Invalid data!" });
+      return res.status(422).send({ message: "Invalid data!" });
    }
    let sql = `INSERT INTO user (username,password) VALUES ('${username}',${password});`;
    database.query(sql, (err, result) => {
       if (err && err.code === "ER_DUP_ENTRY") {
-         return res.status(400).send({ message: "username already exists" });
+         return res.status(409).send({ message: "username already exists" });
       }
       if (err) {
          return res.status(400).send(err);

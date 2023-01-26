@@ -8,7 +8,7 @@ function Login() {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
     const { setUserId } = useContext(AppContext);
-    
+
     const handleInputs = (e) => {
         setUser(prev => {
             return {
@@ -39,6 +39,7 @@ function Login() {
                 <input type="password" name="password" onChange={handleInputs} />
                 <button type='submit'>Click to submit</button>
             </form>
+            <br />
             <NavLink to={'/Register'}>Click here to register</NavLink >
         </div>
     )

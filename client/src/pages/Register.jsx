@@ -36,6 +36,8 @@ function Register() {
          alert("Username is already taken");
       } else if (res.status === 422) {
          alert("fill all the required fields!!!");
+      } else {
+        alert("Server error")
       }
    };
 

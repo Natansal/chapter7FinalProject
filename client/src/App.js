@@ -11,6 +11,7 @@ import AddTodo from "./pages/AddTodos";
 import Register from "./pages/Register";
 import Posts from "./pages/Posts";
 import NavBar from "./pages/NavBar";
+import ChangeUser from "./pages/ChangeUser";
 // import Albums from './pages/Albums';
 // import Posts from './pages/Posts';
 export const AppContext = createContext();
@@ -89,6 +90,9 @@ export default function App() {
                   path="posts/:post_user_id"
                   element={<Posts />}
                />
+               <Route
+                  path="change_user_info"
+                  element={<ChangeUser />} />
             </Route>
             <Route
                path="*"

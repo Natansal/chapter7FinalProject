@@ -1,4 +1,5 @@
-import "./App.css";
+import "./styles/navbar.css";
+
 import { Routes, Route, Navigate, useNavigate, useParams, useLocation } from "react-router-dom";
 import React, { useState, createContext, useEffect } from "react";
 import Login from "./pages/Login";

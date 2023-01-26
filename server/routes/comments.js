@@ -5,7 +5,7 @@ const router = express.Router();
 /* GET users listing. */
 function getcomments(req, res, next) {
    database.query(
-      `SELECT i.full_name AS 'full_name', c.post_id AS 'post_id', c.comment_id AS 'comment_id', c.post_id AS post_id, c.body AS 'body' FROM comment c JOIN info i ON c.user_id = i.user_id   ${createQueryFromRequest(
+      `SELECT c.user_id AS 'user_id', i.full_name AS 'full_name', c.post_id AS 'post_id', c.comment_id AS 'comment_id', c.post_id AS post_id, c.body AS 'body' FROM comment c JOIN info i ON c.user_id = i.user_id   ${createQueryFromRequest(
          { ...req.query, ...req.params },
          "c.",
       )};`,

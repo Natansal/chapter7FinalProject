@@ -8,7 +8,7 @@ async function getComments(id, post_id) {
    return comments;
 }
 
-function Comments({ post_id }) {
+function Comments({ post_id, update }) {
    const { user_id } = useParams();
    const [comments, setComments] = useState(undefined);
 
@@ -21,6 +21,20 @@ function Comments({ post_id }) {
       return <h1>Loading...</h1>;
    }
 
+   function handleDelete(e) {
+      if (!window.confirm("Are you sure you wan't to delete this comment?")) {
+         return;
+      }
+      const comment_id = e.target.name.substring(4, e.target.name.length);
+      fetch(`${serverAdress}/users/${user_id}/comments/${comment_id}`, {
+         method: "DELETE",
+      })
+         .then((res) => res.json())
+         .then((res) => {
+            update();
+            alert(res.message);
+         });
+   }
    return (
       <div>
          {comments.map((comment, index) => {
@@ -28,6 +42,14 @@ function Comments({ post_id }) {
                <div key={index}>
                   <h1>{comment.full_name}</h1>
                   <p>{comment.body}</p>
+                  {comment.user_id == user_id && (
+                     <button
+                        name={`comm${comment.comment_id}`}
+                        onClick={handleDelete}
+                     >
+                        Delete comment
+                     </button>
+                  )}
                </div>
             );
          })}

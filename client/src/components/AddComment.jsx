@@ -8,7 +8,7 @@ function AddComment({ post_id, update }) {
 
    async function handleSubmit(event) {
       event.preventDefault();
-      fetch(`${serverAdress}/users/${user_id}/comment`, {
+      fetch(`${serverAdress}/users/${user_id}/comments`, {
          method: "POST",
          headers: { "Content-type": "application/json" },
          body: JSON.stringify({
@@ -37,6 +37,10 @@ function AddComment({ post_id, update }) {
                value={bodyVal}
                onChange={handleChange}
             ></textarea>
+            <input
+               type="submit"
+               value="Submit"
+            />
          </form>
       </div>
    );

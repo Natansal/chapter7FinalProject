@@ -22,12 +22,24 @@ async function getPosts(id) {
 function Posts() {
    const { user_id, post_user_id } = useParams();
    const [posts, setPosts] = useState(undefined);
-   const { num, setNum } = useState(0);
+   const [num, setNum] = useState(0);
 
    useEffect(() => {
       getPosts(post_user_id ? post_user_id : undefined).then((posts) => setPosts(posts));
       return () => setPosts();
    }, [user_id, post_user_id]);
+
+   useEffect(() => {
+      if (!posts) return;
+      setPosts((prev) => {
+         let arr = JSON.parse(JSON.stringify(prev));
+         arr.forEach((post) => {
+            post.commentVis = false;
+            post.addCommentVis = false;
+         });
+         return arr;
+      });
+   }, [num]);
 
    if (!posts) {
       return <h1>Loading...</h1>;
@@ -76,7 +88,12 @@ function Posts() {
                   <h1>{post.full_name}</h1>
                   <h1>{post.title}</h1>
                   <p>{post.body}</p>
-                  {post.commentVis && <Comments post_id={post.post_id} />}
+                  {post.commentVis && (
+                     <Comments
+                        update={update}
+                        post_id={post.post_id}
+                     />
+                  )}
                   {post.addCommentVis && (
                      <AddComment
                         update={update}
@@ -101,7 +118,7 @@ function Posts() {
                      name={`post${post.post_id}`}
                      onClick={(e) => handleComments(e, "addCommentVis")}
                   >
-                     Add comment
+                     {!post.addCommentVis ? "Add comment" : "Cancel"}
                   </button>
                </div>
             );

@@ -1,0 +1,102 @@
+.postsPage {
+    /* Styles for the main container of the posts */
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.postsPage>div {
+    /* Styles for the individual post containers */
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+.postsPage h1 {
+    /* Styles for the post title and full name */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.postsPage p {
+    /* Styles for the post body */
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.postsPage button {
+    /* Styles for the comment and delete buttons */
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    margin-right: 10px;
+    transition: background-color 0.2s;
+}
+
+.postsPage button:hover {
+    /* Hover styles for the buttons */
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.postsPage button:active {
+    /* Active (clicked) styles for the buttons */
+    background-color: #aaa;
+    transform: translateY(2px);
+}
+
+.postsPage button[name*="delete"] {
+    /* Styles for the delete button */
+    background-color: #f44336;
+    color: white;
+}
+
+.postsPage button[name*="delete"]:hover {
+    /* Hover styles for the delete button */
+    background-color: #e57373;
+}
+
+.postsPage .deleteBtn:active {
+    /* Active styles for the delete button */
+    background-color: #d32f2f;
+}
+
+.comments>h1 {
+    font-size: 40px;
+}
+
+.comments {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.addComment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addComment>form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 80%;
+}
+
+.addComment>form>* {
+    width: 80%;
+    margin: 5px;
+}
+
+.addComment>form>textarea {
+    font-size: larger;
+}

@@ -1,0 +1,29 @@
+.pagesContainer {
+    width: 100%;
+    height: 85vh;
+    overflow-y: scroll;
+    background-image: url(https://img.freepik.com/free-vector/blue-abstract-gradient-wave-vector-background_53876-111548.jpg?w=2000);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    box-sizing: border-box;
+    background-color: #3271a8;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #3271a89c;
+}

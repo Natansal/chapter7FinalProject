@@ -37,74 +37,76 @@ function Register() {
       } else if (res.status === 422) {
          alert("fill all the required fields!!!");
       } else {
-        alert("Server error")
+         alert("Server error");
       }
    };
 
    return (
-      <form onSubmit={handleSubmit}>
-         <label>
-            Username:
-            <input
-               type="text"
-               name="username"
-               value={formData.username}
-               onChange={handleChange}
-            />
-         </label>
-         <br />
-         <label>
-            Password:
-            <input
-               type="password"
-               name="password"
-               value={formData.password}
-               onChange={handleChange}
-            />
-         </label>
-         <br />
-         <label>
-            Full Name:
-            <input
-               type="text"
-               name="full_name"
-               value={formData.full_name}
-               onChange={handleChange}
-            />
-         </label>
-         <br />
-         <label>
-            Email:
-            <input
-               type="email"
-               name="email"
-               value={formData.email}
-               onChange={handleChange}
-            />
-         </label>
-         <br />
-         <label>
-            Phone:
-            <input
-               type="text"
-               name="phone"
-               value={formData.phone}
-               onChange={handleChange}
-            />
-         </label>
-         <br />
-         <label>
-            Job:
-            <input
-               type="text"
-               name="job"
-               value={formData.job}
-               onChange={handleChange}
-            />
-         </label>
-         <br />
-         <button type="submit">Register</button>
-      </form>
+      <div className="registerPage">
+         <form onSubmit={handleSubmit}>
+            <label>
+               Username:
+               <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+               />
+            </label>
+            <br />
+            <label>
+               Password:
+               <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+               />
+            </label>
+            <br />
+            <label>
+               Full Name:
+               <input
+                  type="text"
+                  name="full_name"
+                  value={formData.full_name}
+                  onChange={handleChange}
+               />
+            </label>
+            <br />
+            <label>
+               Email:
+               <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+               />
+            </label>
+            <br />
+            <label>
+               Phone:
+               <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+               />
+            </label>
+            <br />
+            <label>
+               Job:
+               <input
+                  type="text"
+                  name="job"
+                  value={formData.job}
+                  onChange={handleChange}
+               />
+            </label>
+            <br />
+            <button type="submit">Register</button>
+         </form>
+      </div>
    );
 }
 

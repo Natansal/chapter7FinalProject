@@ -57,7 +57,7 @@ function ChangeInfo() {
       });
    }
    return (
-      <div>
+      <div className="changeInfoPage">
          <form onSubmit={handleSubmit}>
             <label htmlFor="full_name">Full name</label>
             <input

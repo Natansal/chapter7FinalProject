@@ -17,8 +17,8 @@ export default function NavBar() {
          <nav className="navBar">
             <NavLink to={`/users/${user_id}/Info`}>Info</NavLink>
             <NavLink to={`/users/${user_id}/change_info`}>Change info</NavLink>
+            <NavLink to={`/users/${user_id}/change_user_info`}>Change user data</NavLink>
             <NavLink to={`/users/${user_id}/todos`}>Todos</NavLink>
-            <NavLink to={`/users/${user_id}/add_todo`}>Add todo</NavLink>
             <NavLink
                end
                to={`/users/${user_id}/posts`}
@@ -26,6 +26,7 @@ export default function NavBar() {
                All posts
             </NavLink>
             <NavLink to={`/users/${user_id}/posts/${user_id}`}>Your posts</NavLink>
+            <NavLink to={`/users/${user_id}/posts/add`}>Add post</NavLink>
             <Link
                onClick={handleClick}
                to="/login"
@@ -33,7 +34,9 @@ export default function NavBar() {
                Log out
             </Link>
          </nav>
-         <Outlet />
+         <div className="pagesContainer">
+            <Outlet />
+         </div>
       </>
    );
 }

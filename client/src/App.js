@@ -1,4 +1,10 @@
 import "./styles/navbar.css";
+import "./styles/pages.css";
+import "./styles/home.css";
+import "./styles/info.css";
+import "./styles/todos.css";
+import "./styles/posts.css";
+import "./styles/addPost.css";
 
 import { Routes, Route, Navigate, useNavigate, useParams, useLocation } from "react-router-dom";
 import React, { useState, createContext, useEffect } from "react";
@@ -7,11 +13,11 @@ import Home from "./pages/Home";
 import Info from "./pages/Info";
 import ChangeInfo from "./pages/ChangeInfo";
 import Todos from "./pages/Todos";
-import AddTodo from "./pages/AddTodos";
 import Register from "./pages/Register";
 import Posts from "./pages/Posts";
 import NavBar from "./pages/NavBar";
 import ChangeUser from "./pages/ChangeUser";
+import AddPost from "./pages/AddPost";
 // import Albums from './pages/Albums';
 // import Posts from './pages/Posts';
 export const AppContext = createContext();
@@ -79,10 +85,6 @@ export default function App() {
                   element={<Todos />}
                />
                <Route
-                  path="add_todo"
-                  element={<AddTodo />}
-               />
-               <Route
                   path="posts"
                   element={<Posts />}
                />
@@ -92,7 +94,12 @@ export default function App() {
                />
                <Route
                   path="change_user_info"
-                  element={<ChangeUser />} />
+                  element={<ChangeUser />}
+               />
+               <Route
+                  path="posts/add"
+                  element={<AddPost />}
+               />
             </Route>
             <Route
                path="*"

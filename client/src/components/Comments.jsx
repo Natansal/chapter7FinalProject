@@ -36,7 +36,8 @@ function Comments({ post_id, update }) {
          });
    }
    return (
-      <div>
+      <div className="comments">
+         <h1>Comments:</h1>
          {comments.map((comment, index) => {
             return (
                <div key={index}>

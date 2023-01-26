@@ -22,9 +22,9 @@ function Info() {
    }
 
    return (
-      <div>
+      <div className="infoPage">
          <h1>Info page</h1>
-         <h1>Hello {info.full_name}</h1>
+         <h3>Name: {info.full_name}</h3>
          <h3>Email: {info.email}</h3>
          <h3>Phone: {info.phone}</h3>
          <h3>Job: {info.job}</h3>

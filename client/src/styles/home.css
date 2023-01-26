@@ -1,0 +1,29 @@
+.homePage {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.homePage>h1{
+    font-size: 6vw;
+    color: #263f62;
+}
+
+.homePage>h2{
+    font-size: 4vw;
+    color: #263f62;
+    height: 300px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s;
+}
+
+.homePage>h2:hover{
+    transform: rotate(360deg);
+    transition: 1s;
+}

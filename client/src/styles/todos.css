@@ -1,0 +1,93 @@
+.doneTask {
+    text-decoration: line-through;
+}
+
+.todosPage {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.todosContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.todos {
+    flex: 4;
+}
+
+.addTodosPage {
+    height: 100%;
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+.addTodosPage form {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height:  60vh;
+}
+.addTodosPage form>input{
+    width: 20vw;
+    height: 10vh;
+    font-size: 20px;
+}
+.addTodosPage form>h1{
+    font-size: 50px;
+}
+
+.todosPage>h1 {
+    font-size: 4vw;
+}
+
+.todo {
+    font-size: larger;
+    border-left: 3px solid black;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.todo>button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: #BFEAF5;
+    color: rgba(53, 49, 121, 0.855);
+    border: none;
+    margin-bottom: 3px;
+
+}
+
+.todo>button:hover {
+    background-color: #649ead;
+    cursor: pointer;
+}
+
+.todo>button:active {
+    background-color: #a8d0d8;
+    color: whitesmoke;
+    box-shadow: none;
+    transform: translateY(2px);
+}

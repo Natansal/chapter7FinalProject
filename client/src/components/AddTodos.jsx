@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import serverAdress from "../serverAdress";
 
-function AddTodo() {
+function AddTodo({ update }) {
    const { user_id } = useParams();
    const [values, setValues] = useState({
       user_id: "",
       title: "",
-      completed: false,
+      completed: true,
    });
-   const navigator = useNavigate();
 
    async function handleSubmit(event) {
       event.preventDefault();
@@ -21,7 +20,12 @@ function AddTodo() {
          .then((res) => res.json())
          .then((res) => {
             alert(res.message);
-            navigator(`/users/${user_id}/todos`);
+            update();
+            setValues({
+               user_id: "",
+               title: "",
+               completed: true,
+            });
          });
    }
 
@@ -34,9 +38,19 @@ function AddTodo() {
       });
    }
 
+   function handleChecked(e) {
+      setValues((prev) => {
+         return {
+            ...prev,
+            [e.target.name]: !e.target.checked,
+         };
+      });
+   }
+
    return (
-      <div>
+      <div className="addTodosPage">
          <form onSubmit={handleSubmit}>
+            <h1>Add a task</h1>
             <label htmlFor="title">Title</label>
             <input
                type="text"
@@ -47,8 +61,8 @@ function AddTodo() {
             <label htmlFor="completed">Done?</label>
             <input
                type="checkbox"
-               checked={values.completed}
-               onChange={handleChange}
+               checked={!values.completed}
+               onChange={handleChecked}
                name="completed"
             />
             <input

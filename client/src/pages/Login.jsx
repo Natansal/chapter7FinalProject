@@ -32,7 +32,7 @@ function Login() {
    };
 
    return (
-      <div>
+      <div className="loginPage">
          <form onSubmit={handleSubmit}>
             <input
                type="text"

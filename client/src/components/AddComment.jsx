@@ -29,7 +29,7 @@ function AddComment({ post_id, update }) {
    }
 
    return (
-      <div>
+      <div className="addComment">
          <form onSubmit={handleSubmit}>
             <textarea
                cols="30"
@@ -37,10 +37,7 @@ function AddComment({ post_id, update }) {
                value={bodyVal}
                onChange={handleChange}
             ></textarea>
-            <input
-               type="submit"
-               value="Submit"
-            />
+            <button type="submit">Add comment</button>
          </form>
       </div>
    );

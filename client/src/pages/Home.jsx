@@ -28,9 +28,9 @@ function Home() {
 
    return (
       <>
-         <div>
+         <div className="homePage">
             <h1>Welcome {fullname}!</h1>
-            <h1>Come have fun with us</h1>
+            <h2>Come have fun with us</h2>
          </div>
       </>
    );

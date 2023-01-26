@@ -81,7 +81,7 @@ function Posts() {
       setNum((prev) => prev + 1);
    }
    return (
-      <div>
+      <div className="postsPage">
          {posts.map((post, index) => {
             return (
                <div key={index}>

@@ -1,0 +1,43 @@
+.infoPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.infoPage>h1 {
+    font-size: 6vw;
+}
+
+.infoPage>h3 {
+    font-size: 1.7vw;
+}
+
+.changeInfoPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.changeInfoPage>form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.changeInfoPage label{
+    font-size: 1.7vw;
+}
+
+.changeInfoPage input{
+    height: 3vw;
+    width: 30%;
+    font-size: 1.3vw;
+}

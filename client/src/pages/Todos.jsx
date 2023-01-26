@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import serverAdress from "../serverAdress";
-
+import AddTodo from "../components/AddTodos";
 async function getTodos(id) {
    let todos = await fetch(`${serverAdress}/users/${id}/todos?deleted=0`);
    todos = await todos.json();
@@ -11,11 +11,16 @@ async function getTodos(id) {
 function Todos() {
    const { user_id } = useParams();
    const [todos, setTodos] = useState(undefined);
+   const [num, setNum] = useState(0);
+
+   function update() {
+      setNum((prev) => prev + 1);
+   }
 
    useEffect(() => {
       getTodos(user_id).then((todos) => setTodos(todos));
       return () => setTodos();
-   }, [user_id]);
+   }, [user_id, num]);
 
    if (!todos) {
       return <h1>Loading...</h1>;
@@ -65,27 +70,40 @@ function Todos() {
       });
    }
    return (
-      <div>
+      <div className="todosPage">
          <h1>Todos page</h1>
-         {todos.map((todo, index) => {
-            return (
-               <div key={index}>
-                  <input
-                     type="checkbox"
-                     onChange={handleChange}
-                     checked={todos.find((val) => val.todo_id === todo.todo_id).completed === 0 ? true : false}
-                     name={`todo${todo.todo_id}`}
-                  />
-                  <label htmlFor={`todo${todo.todo_id}`}>{todo.title}</label>
-                  <button
-                     onClick={handleDelete}
-                     name={`butn${todo.todo_id}`}
-                  >
-                     Delete
-                  </button>
-               </div>
-            );
-         })}
+         <div className="todosContainer">
+            <div className="todos">
+               {todos.map((todo, index) => {
+                  return (
+                     <div
+                        key={index}
+                        className="todo"
+                     >
+                        <input
+                           type="checkbox"
+                           onChange={handleChange}
+                           checked={todo.completed === 0 ? true : false}
+                           name={`todo${todo.todo_id}`}
+                        />
+                        <label
+                           className={todo.completed === 1 ? "" : "doneTask"}
+                           htmlFor={`todo${todo.todo_id}`}
+                        >
+                           {todo.title}
+                        </label>
+                        <button className="deleteBtn"
+                           onClick={handleDelete}
+                           name={`butn${todo.todo_id}`}
+                        >
+                           Delete
+                        </button>
+                     </div>
+                  );
+               })}
+            </div>
+            <AddTodo update={update} />
+         </div>
       </div>
    );
 }

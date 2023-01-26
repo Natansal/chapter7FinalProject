@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import serverAdress from "../serverAdress";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
-import '../styles/login.css';
+import "../styles/login.css";
 
 function Login() {
    const [user, setUser] = useState({});
@@ -46,10 +46,15 @@ function Login() {
                name="password"
                onChange={handleInputs}
             />
-            <button type="submit">Click to submit</button>
+            <button type="submit">Login</button>
          </form>
          <br />
-         <NavLink className='register' to={"/Register"}>Click here to register</NavLink>
+         <NavLink
+            className="register"
+            to={"/Register"}
+         >
+            Click here to register
+         </NavLink>
       </div>
    );
 }

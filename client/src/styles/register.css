@@ -1,10 +1,22 @@
 .registerPage {
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #f7f7f7;
   border-radius: 4px;
+  background-image: url(https://img.freepik.com/free-vector/blue-abstract-gradient-wave-vector-background_53876-111548.jpg?w=2000);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.registerPage form {
+  width: 400px;
+  padding: 30px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 .registerPage h1 {

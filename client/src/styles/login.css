@@ -1,4 +1,4 @@
-.loginPage{
+.loginPage {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -6,6 +6,13 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.loginPage {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(https://img.freepik.com/free-vector/blue-abstract-gradient-wave-vector-background_53876-111548.jpg?w=2000);
+}
+
 .loginPage h1 {
   text-align: center;
   padding: 20px;
@@ -15,8 +22,8 @@
   width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f7f7f7;
   border-radius: 10px;
+  background-color: #f7f7f7;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 

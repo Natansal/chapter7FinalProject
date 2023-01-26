@@ -1,0 +1,52 @@
+.registerPage {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+}
+
+.registerPage h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+.registerPage label {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.registerPage input[type="text"],
+.registerPage input[type="password"],
+.registerPage input[type="email"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registerPage input[type="text"]:focus,
+.registerPage input[type="password"]:focus,
+.registerPage input[type="email"]:focus {
+  border: 1px solid #555;
+}
+
+.registerPage button[type="submit"] {
+  width: 100%;
+  background-color: #66babf;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.registerPage button[type="submit"]:hover {
+  background-color: #75c0c3;
+}

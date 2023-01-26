@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import serverAdress from "../serverAdress";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
+import '../styles/login.css';
 
 function Login() {
    const [user, setUser] = useState({});
@@ -32,7 +33,8 @@ function Login() {
    };
 
    return (
-      <div>
+      <div className="loginPage">
+         <h1>Log in</h1>
          <form onSubmit={handleSubmit}>
             <input
                type="text"
@@ -47,7 +49,7 @@ function Login() {
             <button type="submit">Click to submit</button>
          </form>
          <br />
-         <NavLink to={"/Register"}>Click here to register</NavLink>
+         <NavLink className='register' to={"/Register"}>Click here to register</NavLink>
       </div>
    );
 }

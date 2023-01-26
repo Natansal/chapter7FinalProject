@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import serverAdress from "../serverAdress";
 import { AppContext } from "../App";
-
+import "../styles/register.css";
 function Register() {
   const { logIn } = useContext(AppContext);
 
@@ -42,69 +42,72 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Full Name:
-        <input
-          type="text"
-          name="full_name"
-          value={formData.full_name}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Phone:
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Job:
-        <input
-          type="text"
-          name="job"
-          value={formData.job}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <button type="submit">Register</button>
-    </form>
+    <div className="registerPage">
+      <h1>Register</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Full Name:
+          <input
+            type="text"
+            name="full_name"
+            value={formData.full_name}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Phone:
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label>
+          Job:
+          <input
+            type="text"
+            name="job"
+            value={formData.job}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
 }
 

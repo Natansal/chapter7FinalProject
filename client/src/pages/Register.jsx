@@ -22,24 +22,26 @@ function Register() {
       });
    };
 
-   const handleSubmit = async (e) => {
-      e.preventDefault();
-      const res = await fetch(`${serverAdress}/users/register`, {
-         method: "POST",
-         body: JSON.stringify(formData),
-         headers: { "Content-Type": "application/json" },
-      });
-      const data = await res.json();
-      if (data.id) {
-         logIn(data.id);
-      } else if (res.status === 409) {
-         alert("Username is already taken");
-      } else if (res.status === 422) {
-         alert("fill all the required fields!!!");
-      } else {
-         alert("Server error");
-      }
-   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`${serverAdress}/users/register`, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await res.json();
+    if (data.id) {
+      logIn(data.id);
+    } else if (res.status === 409) {
+      alert("Username is already taken");
+    } else if (res.status === 422) {
+      alert("fill all the required fields!!!");
+    } else if (res.status === 420){
+      alert("email is already exist");
+    } else {
+      alert("Server error");
+    }
+  };
 
   return (
     <div className="registerPage">
